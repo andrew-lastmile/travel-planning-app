@@ -1,6 +1,6 @@
 {
-  "buildCommand": "cd frontend && npm install && npm run vercel-build",
-  "outputDirectory": "frontend/dist",
+  "buildCommand": "if [ -f package.json ] && grep -q '\"vercel-build\"' package.json; then npm install && npm run vercel-build; elif [ -d frontend ]; then npm install --prefix frontend && npm run --prefix frontend vercel-build; else echo \"Unable to locate frontend project\"; exit 1; fi; if [ -d frontend/dist ]; then rm -rf dist && cp -R frontend/dist dist; fi",
+  "outputDirectory": "dist",
   "framework": null,
   "functions": {
     "api/*.js": {
