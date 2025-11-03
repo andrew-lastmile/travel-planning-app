@@ -1,9 +1,0 @@
-{
-  "name": "travel-planning-app-api",
-  "version": "1.0.0",
-  "description": "API functions for travel planning app",
-  "private": true,
-  "dependencies": {
-    "openai": "^4.20.0"
-  }
-}
