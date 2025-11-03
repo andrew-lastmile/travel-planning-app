@@ -4,6 +4,8 @@ import FlightOptions from './FlightOptions';
 import LodgingOptions from './LodgingOptions';
 import AIRecommendations from './AIRecommendations';
 import BudgetVisualization from './BudgetVisualization';
+import ItineraryGenerator from './ItineraryGenerator';
+import ItineraryDisplay from './ItineraryDisplay';
 import '../styles/TripPlanner.css';
 
 function TripPlanner() {
@@ -22,6 +24,8 @@ function TripPlanner() {
   const [availableOptions, setAvailableOptions] = useState({ flights: [], lodging: [] });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [itinerary, setItinerary] = useState(null);
+  const [showItineraryGenerator, setShowItineraryGenerator] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -139,6 +143,48 @@ function TripPlanner() {
             lodgingCost={selectedLodging ? selectedLodging.pricePerNight * nights : 0}
             remainingBudget={getRemainingBudget()}
           />
+        )}
+
+        {(selectedFlight && selectedLodging) && !showItineraryGenerator && !itinerary && (
+          <div className="itinerary-cta">
+            <h3>Ready to plan your days?</h3>
+            <p>Create a personalized itinerary with AI-powered recommendations</p>
+            <button
+              className="btn-primary"
+              onClick={() => setShowItineraryGenerator(true)}
+            >
+              📅 Create Itinerary
+            </button>
+          </div>
+        )}
+
+        {showItineraryGenerator && !itinerary && (
+          <ItineraryGenerator
+            destination={tripData.destination}
+            startDate={tripData.startDate}
+            endDate={tripData.endDate}
+            onItineraryGenerated={(data) => {
+              setItinerary(data);
+              setShowItineraryGenerator(false);
+            }}
+          />
+        )}
+
+        {itinerary && (
+          <>
+            <ItineraryDisplay itineraryData={itinerary} />
+            <div className="itinerary-actions">
+              <button
+                className="btn-secondary"
+                onClick={() => {
+                  setItinerary(null);
+                  setShowItineraryGenerator(true);
+                }}
+              >
+                🔄 Generate New Itinerary
+              </button>
+            </div>
+          </>
         )}
       </div>
     </div>

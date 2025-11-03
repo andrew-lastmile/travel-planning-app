@@ -1,14 +1,30 @@
 # AI Travel Planning App
 
-An AI-assisted travel planning application that helps users plan flights and lodging within their budget.
+An AI-assisted travel planning application that helps users plan flights, lodging, and personalized itineraries within their budget.
 
 ## Features
 
-- AI-powered travel recommendations using OpenAI GPT-4
+### Core Features
+- AI-powered travel recommendations using OpenAI GPT-4o-mini with real data access via MCP servers
 - Budget allocation between flights and lodging
 - Interactive flight and lodging selection
 - Real-time budget visualization with charts and progress bars
+
+### 🗓️ Smart Itinerary Generator (NEW!)
+- **Personalized Day-by-Day Planning**: AI creates custom itineraries based on your interests
+- **Real Weather Integration**: Activities adapt to actual weather forecasts
+- **Travel Pace Options**: Choose between slow (relaxed), moderate (balanced), or fast (packed) schedules
+- **Interest-Based Recommendations**: Select from 10 interest categories (culture, food, adventure, etc.)
+- **Budget-Conscious**: Set daily budgets and get cost estimates for each activity
+- **Detailed Timelines**: Morning, afternoon, and evening plans with specific activities
+- **Local Recommendations**: Real restaurant and attraction suggestions
+- **Packing Tips**: Custom packing advice based on your destination and dates
+- **Print-Friendly**: Export your itinerary for offline access
+
+### Design
 - Responsive design for mobile and desktop
+- Beautiful timeline UI with expandable day cards
+- Weather icons and activity badges
 
 ## Tech Stack
 
@@ -19,8 +35,9 @@ An AI-assisted travel planning application that helps users plan flights and lod
 
 **Backend:**
 - Node.js with Express
-- OpenAI API for AI recommendations
-- Mock data for flights and lodging
+- OpenAI API (GPT-4o-mini) for AI recommendations
+- Real flight and lodging data via OpenAI's MCP server integrations
+- Weather data integration through MCP servers
 
 ## Local Development Setup
 
